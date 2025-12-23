@@ -20,12 +20,32 @@ SELECT(가져온다) *(모든것을) FROM(어디서?) movie(movie라는 full_sta
 DROP : 테이블을 삭제할떄. 왠만하면 쓸일 없음. 초기 실험떄 빨리빨리 확인하는 용도
 DROP(삭제하다) TABLE(테이블을) movie(movie라는 테이블을 삭제하다.)
 */
+DROP TABLE movie;
+DROP TABLE director;
+
+SELECT * FROM movie;
+SELECT * FROM director;
 
 CREATE TABLE movie (
 	movie_id INT PRIMARY KEY AUTO_INCREMENT,
     movie_title VARCHAR(30),
     movie_genre VARCHAR(30),
-    movie_main_actor VARCHAR(30)
+    movie_main_actor VARCHAR(30),
+    movie_director_id INT -- 왜래기를 설정하기위한 신규 컬럼
 );
-SELECT * FROM movie;
-DROP TABLE movie;
+CREATE TABLE director(
+	director_id INT PRIMARY KEY AUTO_INCREMENT,
+    director_name VARCHAR(30)
+);
+ALTER TABLE movie ADD FOREIGN KEY (movie_director_id) REFERENCES director(director_id);
+-- 테이블에 수정을 할거다. mive에 외래키를 추가함으로써.
+
+
+
+INSERT INTO director(director_name) VALUES ("전설의 비둘기");
+INSERT INTO director(director_name) VALUES ("노숙자 비둘기");
+
+INSERT INTO movie(movie_title,movie_genre,movie_main_actor,movie_director_id) VALUES ("전설의 비둘기","SF","산비둘기",1);
+select movie_title,movie_genre,movie_main_actor, director_name from movie join director on movie_director_id = director_id WHERE movie_director_id=1;
+select * from movie join director on movie_director_id = director_id;
+
