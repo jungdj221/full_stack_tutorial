@@ -29,6 +29,9 @@ const Div = styled.div`
     margin-top: 20px;
     font-weight: bold;
   }
+  btn {
+    z-index: 200;
+  }
 `;
 const Home = () => {
   const navigate = useNavigate();
@@ -64,6 +67,7 @@ const Home = () => {
             <th>제목</th>
             <th>장르</th>
             <th>영화배우</th>
+            <th>영화감독</th>
             <th>삭제</th>
           </tr>
         </thead>
@@ -73,6 +77,7 @@ const Home = () => {
               <td>{movie.movieTitle}</td>
               <td>{movie.movieGenre}</td>
               <td>{movie.movieMainActor}</td>
+              <td>{movie.directorName}</td>
               <td>
                 <button onClick={() => onDelete(movie.movieId)}>삭제</button>
               </td>

@@ -44,9 +44,11 @@ const Detail = () => {
     movieTitle: "",
     movieGenre: "",
     movieMainActor: "",
+    directorName: "",
   });
 
   const insert = async () => {
+    console.log(movieInfo);
     await insertMovie(movieInfo);
     navigate("/");
   };
@@ -80,6 +82,17 @@ const Detail = () => {
             setMovieInfo((prev) => ({
               ...prev,
               movieMainActor: e.target.value,
+            }))
+          }
+        />
+        <input
+          type="text"
+          placeholder="영화 감독 이름"
+          value={movieInfo.directorName}
+          onChange={(e) =>
+            setMovieInfo((prev) => ({
+              ...prev,
+              directorName: e.target.value,
             }))
           }
         />

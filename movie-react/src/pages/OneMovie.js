@@ -96,6 +96,13 @@ const OneMovie = () => {
               setMovie((prev) => ({ ...prev, movieMainActor: e.target.value }))
             }
           />
+          <input
+            placeholder="영화주연배우"
+            value={movie.directorName}
+            onChange={(e) =>
+              setMovie((prev) => ({ ...prev, directorName: e.target.value }))
+            }
+          />
           <div className="button-container">
             <button onClick={update}>완료</button>
             <button onClick={cancelUpdate}>취소</button>
@@ -107,6 +114,7 @@ const OneMovie = () => {
           <div className="content">영화제목 : {movie.movieTitle}</div>
           <div className="content">영화장르 : {movie.movieGenre}</div>
           <div className="content">영화주연배우 : {movie.movieMainActor}</div>
+          <div className="content">영화감동 : {movie.directorName}</div>
           <div className="btn-container">
             <button onClick={() => setBoolean(true)}>수정</button>
             <button onClick={() => navigate("/")}>Home으로</button>

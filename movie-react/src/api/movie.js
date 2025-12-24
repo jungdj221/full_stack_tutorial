@@ -22,6 +22,7 @@ export const insertMovie = async (data) => {
 
 // 수정
 export const updateMovie = async (data) => {
+  console.log(data);
   return await instance.put("movie", data);
 };
 
